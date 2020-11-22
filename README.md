@@ -1,7 +1,8 @@
-# cpp-game
-Creating various games using cpp
+# Rock Paper Scissor Game In C++
 
-Hello. This repository will be used to make various games using the programming language of c++.
-The games will coded in various methods available in cpp (like functions, classes, etc.)
-
-Have fun. Enjoy. Happy coding.
+Enjoy the ever popular rock paper scissor game created using C++ language.
+For fellow coders: 
+    --> I am presenting this code in various methodologies
+    - Entire code in 'Main class'
+    - Using functions
+    - Using Object Oriented Programming
