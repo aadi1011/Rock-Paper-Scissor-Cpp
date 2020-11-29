@@ -6,3 +6,5 @@ For fellow coders: <br>
 &emsp; &emsp;    - Entire code in 'Main class' <br>
 &emsp; &emsp;   - Using functions <br>
 &emsp; &emsp;   - Using Object Oriented Programming <br>
+
+More files will be added soon to show how the game can be built in different ways. Stay Tuned
