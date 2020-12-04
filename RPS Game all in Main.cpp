@@ -150,4 +150,5 @@ Repeat:
 
 Exit:
 	cout << endl << endl << "Thank you for playing, " << p1 << " and " << p2 << " hope you had a great time" << endl << endl;
+	system("pause");
 }
