@@ -1,5 +1,6 @@
 // C++ Code for Rock-Paper-Scissors Game
 // Code by Aadith Sukumar (https://www.github.com/aadi1011)
+// Available in repository (https://github.com/aadi1011/Rock-Paper-Scissor-Cpp)
 
 #include<iostream>
 #include<string>
