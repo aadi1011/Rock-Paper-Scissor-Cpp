@@ -17,14 +17,14 @@ public:
 	string p1, p2;
 	//Char declarations to take choices
 	char startchoice{}, p1choice{}, p2choice{}, repeatchoice{};
-	int round{};
+	int round{}, modechoice{};
 	
 	// Primary Functions of RPS Game 
     // Function to start the game
 	void username();
 	void userchoice();
 	void rounds();
-	void game();//game function with the algorithms to run the primary driver of the game
+	void game();	//game function with the algorithms to run the primary driver of the game
 	void p1error();
 	void p2error();
 	void repeat();
@@ -49,6 +49,7 @@ void RPS::username()
 void RPS::userchoice()
 {
 	cout << "Welcome, " << p1 << " and " << p2 << ". \nAre you ready to play Rock, Paper, Scissors? (y/n)" << endl;
+
 	cin >> startchoice;
     //first choice of the user 
     //if the user enters y, the game will start
