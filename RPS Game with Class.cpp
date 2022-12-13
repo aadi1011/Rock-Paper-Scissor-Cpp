@@ -21,6 +21,7 @@ public:
 	
 	// Primary Functions of RPS Game 
     // Function to start the game
+	void menu();
 	void username();
 	void userchoice();
 	void rounds();
@@ -31,10 +32,51 @@ public:
 	void exitgame();//exit function to exit the game
 };
 
+//Intro and menu function
+void RPS::menu()
+{
+	cout << "\nWelcome to Rock, Paper, Scissors Game!" << endl;
+	cout<<"1. Start Game\n2. About\n3. Exit\n\n--> ";
+	cin >> modechoice;
+
+	if (modechoice == 1)
+	{
+		system("cls");
+		username();//proceeding to the next function
+	}
+	else if (modechoice == 2)
+	{
+		system("cls");
+		cout << "\nThis is a Rock, Paper, Scissors game made by Aadith Sukumar (github.com/aadi1011)" << endl;
+		cout << "This game is made using C++ and OOP method." << endl;
+		cout << "This game is made for the purpose of learning C++ and OOP." << endl;
+		cout << "You can find the code for this game in my github repository (github.com/aadi1011/Rock-Paper-Scissor-Cpp)" << endl;
+		cout << "\n Press any key to go back to the menu" << endl;
+		_getch();
+		system("cls");
+		menu();//recursion to the menu function
+	}
+	else if (modechoice == 3)
+	{
+		exitgame();//proceeding to the exit function
+	}
+	else
+	{
+		system("cls");
+		cout << "Invalid Input. Please try again." << endl;
+		menu();//recursion to the menu function
+	}
+	
+
+	system("cls");
+	username();//proceeding to the next function
+}
+
+
 //Username function
 void RPS::username()
 {
-    //Taking input from the user for the names of the players
+	//Taking input from the user for the names of the players
 	cout << "Enter your name player 1: " << endl;
 	cin >> p1;
 	cout << endl << "Enter your name player 2: " << endl;
