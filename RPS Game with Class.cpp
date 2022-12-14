@@ -17,7 +17,7 @@ public:
 	string p1, p2;
 	//Char declarations to take choices
 	char startchoice{}, p1choice{}, p2choice{}, repeatchoice{};
-	int round{};
+	int round{}, introchoice{};
 	// Primary Functions of RPS Game 
     // Function to start the game
 	void username();
@@ -280,13 +280,77 @@ void RPS::repeat()
 void RPS::exitgame()
 {
 	system("cls");
-	cout << endl << endl << "Thank you for playing, " << p1 << " and " << p2 << " hope you had a great time" << endl << endl;
+	cout << endl << endl << "Thank you for playing, " << p1 << " and " << p2 << "I hope you had a great time" << endl << endl;
 	system("pause");
 	exit(0);
 }
 
 int main()
 {
+	int introchoice, gamemode;
+	char exitchoice;
+	cout << "Welcome to Rock, Paper, Scissor" << endl << endl;
+	cout<<"1. Start\n2. About\n3. Exit\n";
+	cin >> introchoice;
+	if (introchoice == 1)
+	{
+		system("cls");
+		cout<<"Choose gamemode: \n1. Player vs Player\n2. Player vs Computer\n";
+		cin>>gamemode;
+
+		/*
+		Write gamemode if statements here for pvp (class RPS) and pvc (class RPS2)
+		*/
+	}
+	else if (introchoice == 2)
+	{
+		system("cls");
+		cout << "This is a simple game of Rock, Paper, Scissor" << endl << endl;
+		cout << "The rules are simple, you have to choose either Rock, Paper or Scissor" << endl << endl;
+		cout << "Rock beats Scissor, Scissor beats Paper and Paper beats Rock" << endl << endl;
+		cout << "Created by Aadith Sukumar" << endl;
+		cout<<"Github: https://www.github.com/aadi1011"<<endl;
+		cout<<"Game source code available at: https://www.github.com/aadi1011/Rock-Paper-Scissor"<<endl;
+
+		system("pause");
+		system("cls");
+		main();
+	}
+	else if (introchoice == 3)
+	{
+		system("cls");
+		cout << " Are you sure? (y/n)" << endl << endl;
+		cin >> exitchoice;
+		if (exitchoice == 'Y' || exitchoice == 'y')
+		{
+			system("cls");
+			cout << "I wish you had played! See you next time..." << endl << endl;
+			system("pause");
+			exit(0);
+		}
+		else if (exitchoice == 'N' || exitchoice == 'n')
+		{
+			system("cls");
+			main();
+		}
+		else
+		{
+			system("cls");
+			cout << "Invalid option selected, please select either Y or N" << endl << endl;
+			main();
+		}
+
+		system("pause");
+		exit(0);
+	}
+	else
+	{
+		system("cls");
+		cout << "Invalid option selected, please select either 1, 2 or 3" << endl << endl;
+		main();
+	}
+
+
 	RPS gameclass;
 	gameclass.username();
 	return 0;
