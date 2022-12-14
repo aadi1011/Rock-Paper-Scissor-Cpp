@@ -17,66 +17,23 @@ public:
 	string p1, p2;
 	//Char declarations to take choices
 	char startchoice{}, p1choice{}, p2choice{}, repeatchoice{};
-	int round{}, modechoice{};
-	
+	int round{};
 	// Primary Functions of RPS Game 
     // Function to start the game
-	void menu();
 	void username();
 	void userchoice();
 	void rounds();
-	void game();	//game function with the algorithms to run the primary driver of the game
+	void game();//game function with the algorithms to run the primary driver of the game
 	void p1error();
 	void p2error();
 	void repeat();
 	void exitgame();//exit function to exit the game
 };
 
-//Intro and menu function
-void RPS::menu()
-{
-	cout << "\nWelcome to Rock, Paper, Scissors Game!" << endl;
-	cout<<"1. Start Game\n2. About\n3. Exit\n\n--> ";
-	cin >> modechoice;
-
-	if (modechoice == 1)
-	{
-		system("cls");
-		username();//proceeding to the next function
-	}
-	else if (modechoice == 2)
-	{
-		system("cls");
-		cout << "\nThis is a Rock, Paper, Scissors game made by Aadith Sukumar (github.com/aadi1011)" << endl;
-		cout << "This game is made using C++ and OOP method." << endl;
-		cout << "This game is made for the purpose of learning C++ and OOP." << endl;
-		cout << "You can find the code for this game in my github repository (github.com/aadi1011/Rock-Paper-Scissor-Cpp)" << endl;
-		cout << "\n Press any key to go back to the menu" << endl;
-		_getch();
-		system("cls");
-		menu();//recursion to the menu function
-	}
-	else if (modechoice == 3)
-	{
-		exitgame();//proceeding to the exit function
-	}
-	else
-	{
-		system("cls");
-		cout << "Invalid Input. Please try again." << endl;
-		menu();//recursion to the menu function
-	}
-	
-
-	system("cls");
-	username();//proceeding to the next function
-}
-
-
 //Username function
 void RPS::username()
 {
-	//Taking input from the user for the names of the players
+    //Taking input from the user for the names of the players
 	cout << "Enter your name player 1: " << endl;
 	cin >> p1;
 	cout << endl << "Enter your name player 2: " << endl;
@@ -91,7 +48,6 @@ void RPS::username()
 void RPS::userchoice()
 {
 	cout << "Welcome, " << p1 << " and " << p2 << ". \nAre you ready to play Rock, Paper, Scissors? (y/n)" << endl;
-
 	cin >> startchoice;
     //first choice of the user 
     //if the user enters y, the game will start
@@ -146,6 +102,7 @@ void RPS::rounds()
 void RPS::game()
 {
     //for loop to run the game for the number of rounds entered by the user
+	int p1tally=0, p2tally=0;
 	for (int i = 1; i <= round; i++)
 	{
 		//round call
@@ -173,10 +130,12 @@ void RPS::game()
 			else if (p2choice == 'p' || p2choice == 'P')
 			{
 				cout << "--> " << p2 << " is the winner" << endl << endl << endl << endl;//Declaring player 2 as the winner
+				p2tally++;
 			}
 			else if (p2choice == 's' || p2choice == 'S')
 			{
 				cout << "--> " << p1 << " is the winner" << endl << endl << endl << endl;   //Declaring player 1 as the winner
+				p1tally++;
 			}
             //if the user enters any other option, the program will ask the user to enter the option again
             //the else for the player 2 choice is inside the if for player 1 choice
@@ -202,6 +161,7 @@ void RPS::game()
 			if (p2choice == 'r' || p2choice == 'R')
 			{
 				cout << "--> " << p1 << " is the winner" << endl << endl << endl << endl;
+				p1tally++;
 			}
 			else if (p2choice == 'p' || p2choice == 'P')
 			{
@@ -210,6 +170,7 @@ void RPS::game()
 			else if (p2choice == 's' || p2choice == 'S')
 			{
 				cout << "--> " << p2 << " is the winner" << endl << endl << endl << endl;
+				p2tally++;
 			}
 			else
 			{
@@ -225,10 +186,12 @@ void RPS::game()
 			if (p2choice == 'r' || p2choice == 'R')
 			{
 				cout << "--> " << p2 << " is the winner" << endl << endl << endl << endl;
+				p2tally++;
 			}
 			else if (p2choice == 'p' || p2choice == 'P')
 			{
 				cout << "--> " << p1 << " is the winner" << endl << endl << endl << endl;
+				p1tally++;
 			}// Code by Aadith Sukumar (https://www.github.com/aadi1011)
 			else if (p2choice == 's' || p2choice == 'S')
 			{
@@ -250,6 +213,23 @@ void RPS::game()
 	}
     //the game function will end here
 	system("pause");
+	system("cls");
+	// score declaration based on the tally
+	cout<<"Scores: \n"<<p1<<" : "<<p1tally<<"\n"<<p2<<" : "<<p2tally<<endl<<endl;
+	if (p1tally > p2tally)
+	{
+		cout << p1 << " is the winner" << endl << endl << endl << endl;
+	}
+	else if (p1tally < p2tally)
+	{
+		cout << p2 << " is the winner" << endl << endl << endl << endl;
+	}
+	else
+	{
+		cout << "It's a draw" << endl << endl << endl << endl;
+	}
+	system("pause");
+
 	repeat(); //proceeding to the function - repeat
     //the repeat function will ask the user if they want to play again
     //executes after all iterations of the for loop are completed
