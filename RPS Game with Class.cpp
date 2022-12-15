@@ -7,7 +7,7 @@
 #include<conio.h>
 #include<stdlib.h>
 using namespace std;
-
+int main();
 // Main Class of the program
 class RPS
 {
@@ -17,7 +17,7 @@ public:
 	string p1, p2;
 	//Char declarations to take choices
 	char startchoice{}, p1choice{}, p2choice{}, repeatchoice{};
-	int round{};
+	int round{}, introchoice{};
 	// Primary Functions of RPS Game 
     // Function to start the game
 	void username();
@@ -27,6 +27,7 @@ public:
 	void p1error();
 	void p2error();
 	void repeat();
+	void computer();
 	void exitgame();//exit function to exit the game
 };
 
@@ -263,7 +264,7 @@ void RPS::repeat()
 	if (repeatchoice == 'Y' || repeatchoice == 'y')
 	{
 		system("cls");
-		rounds();
+		main();
 	}
 	else if (repeatchoice == 'N' || repeatchoice == 'n')
 	{
@@ -276,18 +277,211 @@ void RPS::repeat()
 		repeat();
 	}
 }
+
+// player vs computer function
+void RPS::computer()
+{
+	int p1tally=0, p2tally=0;
+	system("cls");
+	cout << "Please enter your name" << endl;
+	cin >> p1;
+	cout << "Please enter the number of rounds you would like to play" << endl;
+	cin >> round;
+	system("cls");
+	for (int i = 0; i < round; i++)
+	{
+		cout << p1 << ", please choose your move Rock, Paper or Scissor (R, P, S)" << endl;
+		cin >> p1choice;
+		if (p1choice == 'r' || p1choice == 'R')
+		{
+			cout << "--> " << p1 << " has chosen Rock" << endl;
+			p2choice = rand() % 3 + 1;
+			if (p2choice == 1)
+			{
+				cout << "--> Computer has chosen Rock" << endl;
+				cout << "--> It's a draw" << endl << endl << endl << endl;
+			}
+			else if (p2choice == 2)
+			{
+				cout << "--> Computer has chosen Paper" << endl;
+				cout << "--> Computer is the winner" << endl << endl << endl << endl;
+				p2tally++;
+			}
+			else if (p2choice == 3)
+			{
+				cout << "--> Computer has chosen Scissor" << endl;
+				cout << "--> " << p1 << " is the winner" << endl << endl << endl << endl;
+				p1tally++;
+			}
+			else
+			{
+				p2error();
+			}
+		}
+		else if (p1choice == 'p' || p1choice == 'P')
+		{
+			cout << "--> " << p1 << " has chosen Paper" << endl;
+			p2choice = rand() % 3 + 1;
+			if (p2choice == 1)
+			{
+				cout << "--> Computer has chosen Rock" << endl;
+				cout << "--> " << p1 << " is the winner" << endl << endl << endl << endl;
+				p1tally++;
+			}
+			else if (p2choice == 2)
+			{
+				cout << "--> Computer has chosen Paper" << endl;
+				cout << "--> It's a draw" << endl << endl << endl << endl;
+			}
+			else if (p2choice == 3)
+			{
+				cout << "--> Computer has chosen Scissor" << endl;
+				cout << "--> Computer is the winner" << endl << endl << endl << endl;
+				p2tally++;
+			}
+			else
+			{
+				p2error();
+			}
+		}
+		else if (p1choice == 's' || p1choice == 'S')
+		{
+			cout << "--> " << p1 << " has chosen Scissor" << endl;
+			p2choice = rand() % 3 + 1;
+			if (p2choice == 1)
+			{
+				cout << "--> Computer has chosen Rock" << endl;
+				cout << "--> Computer is the winner" << endl << endl << endl << endl;
+				p2tally++;
+			}
+			else if (p2choice == 2)
+			{
+				cout << "--> Computer has chosen Paper" << endl;
+				cout << "--> " << p1 << " is the winner" << endl << endl << endl << endl;
+				p1tally++;
+			}
+			else if (p2choice == 3)
+			{
+				cout << "--> Computer has chosen Scissor" << endl;
+				cout << "--> It's a draw" << endl << endl << endl << endl;
+			}
+			else
+			{
+				p2error();
+			}
+		}
+		else
+		{
+			p1error();
+		}
+	}
+	system("pause");
+	system("cls");
+	// tally
+	cout<<"Scores:\n"<<p1<<" : "<<p1tally<<"\nComputer : "<<p2tally<<endl<<endl;
+	if (p1tally > p2tally)
+	{
+		cout << p1 << " is the winner" << endl;
+	}
+	else if (p1tally < p2tally)
+	{
+		cout << "Computer is the winner" << endl;
+	}
+	else
+	{
+		cout << "It's a draw" << endl;
+	}
+	system("pause");
+	repeat();
+}
+
 // Code by Aadith Sukumar (https://www.github.com/aadi1011)
 void RPS::exitgame()
 {
 	system("cls");
-	cout << endl << endl << "Thank you for playing, " << p1 << " and " << p2 << " hope you had a great time" << endl << endl;
+	cout << endl << endl << "Thank you for playing, " << p1 << " and " << p2 << "I hope you had a great time" << endl << endl;
 	system("pause");
 	exit(0);
 }
 
 int main()
 {
-	RPS gameclass;
-	gameclass.username();
+	int introchoice, gamemode;
+	char exitchoice;
+	cout << "Welcome to Rock, Paper, Scissor" << endl << endl;
+	cout<<"1. Start\n2. About\n3. Exit\n";
+	cin >> introchoice;
+	if (introchoice == 1)
+	{
+		system("cls");
+		cout<<"Choose gamemode: \n1. Player vs Player\n2. Player vs Computer\n";
+		cin>>gamemode;
+
+		if (gamemode == 1)
+		{
+			RPS game1;
+			game1.username();
+		}
+		else if (gamemode == 2)
+		{
+			RPS game2;
+			game2.computer();
+		}
+		else
+		{
+			cout << "Invalid input, please try again" << endl;
+			system("pause");
+			system("cls");
+			main();
+		}
+	}
+	else if (introchoice == 2)
+	{
+		system("cls");
+		cout << "This is a simple game of Rock, Paper, Scissor" << endl << endl;
+		cout << "The rules are simple, you have to choose either Rock, Paper or Scissor" << endl << endl;
+		cout << "Rock beats Scissor, Scissor beats Paper and Paper beats Rock" << endl << endl;
+		cout << "Created by Aadith Sukumar" << endl;
+		cout<<"Github: https://www.github.com/aadi1011"<<endl;
+		cout<<"Game source code available at: https://www.github.com/aadi1011/Rock-Paper-Scissor"<<endl;
+
+		system("pause");
+		system("cls");
+		main();
+	}
+	else if (introchoice == 3)
+	{
+		system("cls");
+		cout << " Are you sure? (y/n)" << endl << endl;
+		cin >> exitchoice;
+		if (exitchoice == 'Y' || exitchoice == 'y')
+		{
+			system("cls");
+			cout << "I wish you had played! See you next time..." << endl << endl;
+			system("pause");
+			exit(0);
+		}
+		else if (exitchoice == 'N' || exitchoice == 'n')
+		{
+			system("cls");
+			main();
+		}
+		else
+		{
+			system("cls");
+			cout << "Invalid option selected, please select either Y or N" << endl << endl;
+			main();
+		}
+
+		system("pause");
+		exit(0);
+	}
+	else
+	{
+		system("cls");
+		cout << "Invalid option selected, please select either 1, 2 or 3" << endl << endl;
+		main();
+	}
+
 	return 0;
 }// Code by Aadith Sukumar (https://www.github.com/aadi1011)
