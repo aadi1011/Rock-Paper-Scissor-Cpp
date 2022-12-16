@@ -1,3 +1,5 @@
+// Based on old version V.1.1
+
 #include<iostream>
 #include<conio.h>
 #include<string>
